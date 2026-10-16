@@ -22,11 +22,7 @@ function walk(dir, ext) {
   return results;
 }
 
-// Simple test runner (no Jest dependency needed for CI validation)
-function describe(name, fn) { console.log('\n' + name); fn(); }
-function test(name, fn) { try { fn(); console.log('  PASS: ' + name); } catch (e) { console.error('  FAIL: ' + name + ' — ' + e.message); process.exitCode = 1; } }
-function expect(val) { return { toBe: (v) => { if (val !== v) throw new Error(`expected ${val} to be ${v}`); }, toContain: (v) => { if (!String(val).includes(v)) throw new Error(`expected "${String(val).substring(0,60)}" to contain "${v}"`); }, toBeTruthy: () => { if (!val) throw new Error(`expected truthy, got ${val}`); }, toBeGreaterThan: (v) => { if (!(val > v)) throw new Error(`expected ${val} > ${v}`); }, toBeGreaterThanOrEqual: (v) => { if (!(val >= v)) throw new Error(`expected ${val} >= ${v}`); }, toMatch: (re) => { if (!re.test(String(val))) throw new Error(`expected "${String(val).substring(0,60)}" to match ${re}`); }, toThrow: () => { try { val(); throw new Error('did not throw'); } catch (e) { if (e.message === 'did not throw') throw new Error('expected to throw'); } }, not: { toThrow: () => { try { val(); } catch (e) { throw new Error('expected not to throw but got: ' + e.message); } } } }; }
-global.describe = describe; global.test = test; global.expect = expect;
+// Jest provides describe, test, and expect globally — no custom runner needed.
 
 describe('Repository structure', () => {
   test('SKILL.md exists with YAML frontmatter', () => {
