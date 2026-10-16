@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Award-winning web design boilerplate">
+  <title>Boilerplate — Award-Winning Starting Point</title>
+  <!-- Design tokens (import first) -->
+  <link rel="stylesheet" href="tokens/design-tokens.css">
+  <link rel="stylesheet" href="tokens/themes.css">
+  <link rel="stylesheet" href="tokens/fluid-typography.css">
+  <!-- Animation styles -->
+  <link rel="stylesheet" href="animations/image-reveal.css">
+  <link rel="stylesheet" href="animations/page-transition.css">
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main" style="position:absolute;left:-9999px;top:0;z-index:100;">Skip to content</a>
+
+  <!-- Navigation (see templates/components/overlay-menu.html) -->
+  <button class="nav-trigger" aria-label="Toggle menu" aria-expanded="false">
+    <span style="display:block;width:28px;height:2px;background:var(--color-text);margin:5px 0;"></span>
+    <span style="display:block;width:28px;height:2px;background:var(--color-text);margin:5px 0;"></span>
+    <span style="display:block;width:28px;height:2px;background:var(--color-text);margin:5px 0;"></span>
+  </button>
+
+  <main id="main">
+    <!-- Hero (see templates/components/hero-immersive.html) -->
+    <section style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:var(--padding-page);">
+      <div style="text-align:center;max-width:900px;">
+        <h1 style="font-size:var(--font-size-display);line-height:var(--leading-hero);font-weight:var(--weight-black);letter-spacing:var(--tracking-hero);margin-bottom:var(--space-md);">
+          Your Title<br>Here
+        </h1>
+        <p style="font-size:var(--font-size-xl);color:var(--color-text-muted);max-width:50ch;margin:0 auto var(--space-xl);">
+          Subtitle text. Keep it concise, impactful, and clear.
+        </p>
+        <button data-magnetic data-magnetic-strength="0.3" style="padding:1rem 2.5rem;font-size:var(--font-size-base);font-weight:var(--weight-semibold);color:var(--color-bg);background:var(--color-cta);border:none;border-radius:var(--radius-full);cursor:pointer;">
+          Get Started
+        </button>
+      </div>
+    </section>
+
+    <!-- Content sections with scroll reveal -->
+    <section style="padding:var(--padding-section);max-width:var(--container-max);margin:0 auto;">
+      <h2 data-reveal="up" style="font-size:var(--font-size-4xl);font-weight:var(--weight-bold);letter-spacing:var(--tracking-tight);margin-bottom:var(--space-lg);">
+        Section Title
+      </h2>
+      <p data-reveal="up" data-reveal-delay="100" style="font-size:var(--font-size-lg);color:var(--color-text-muted);max-width:60ch;line-height:var(--leading-body);">
+        Content goes here. Use scroll reveal for staggered entrance animations.
+      </p>
+    </section>
+  </main>
+
+  <footer style="padding:var(--padding-section);border-top:1px solid var(--color-border);">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md);">
+      <p style="font-size:var(--font-size-sm);color:var(--color-text-dim);">© 2026 Your Name</p>
+      <div style="display:flex;gap:var(--space-md);">
+        <a href="#" style="font-size:var(--font-size-sm);color:var(--color-text-muted);">Twitter</a>
+        <a href="#" style="font-size:var(--font-size-sm);color:var(--color-text-muted);">GitHub</a>
+        <a href="#" style="font-size:var(--font-size-sm);color:var(--color-text-muted);">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts (defer non-critical) -->
+  <script src="animations/scroll-reveal.js"></script>
+  <script src="animations/magnetic-cursor.js"></script>
+</body>
+</html>

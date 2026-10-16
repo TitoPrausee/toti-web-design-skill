@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Page Transitions — View Transitions API + Barba.js fallback
+   Import after design-tokens.css.
+   
+   Usage (View Transitions API):
+   document.startViewTransition(() => { /* DOM update *\/ });
+   
+   CSS customizes the transition animation.
+   ========================================================================== */
+
+/* ---- View Transitions API ---- */
+::view-transition-old(root) {
+  animation: vt-fade-out 0.4s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+
+::view-transition-new(root) {
+  animation: vt-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+@keyframes vt-fade-out {
+  to { opacity: 0; transform: scale(1.02); }
+}
+
+@keyframes vt-fade-in {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ---- Curtain transition (clip-path) ---- */
+.page-transition-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal, 99);
+  background: var(--color-bg, #0a0a0a);
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+  pointer-events: none;
+}
+
+.page-transition-curtain.is-active {
+  clip-path: inset(0 0 0 0);
+  pointer-events: auto;
+}
+
+.page-transition-curtain.is-leaving {
+  clip-path: inset(100% 0 0 0);
+}
+
+/* ---- Slide transition ---- */
+.page-transition-slide {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal, 99);
+  background: var(--color-bg, #0a0a0a);
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+  pointer-events: none;
+}
+
+.page-transition-slide.is-active {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.page-transition-slide.is-leaving {
+  transform: translateX(-100%);
+}
+
+/* ---- Circle reveal ---- */
+.page-transition-circle {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal, 99);
+  background: var(--color-bg, #0a0a0a);
+  clip-path: circle(0% at var(--tx, 50%) var(--ty, 50%));
+  transition: clip-path 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  pointer-events: none;
+}
+
+.page-transition-circle.is-active {
+  clip-path: circle(150% at var(--tx, 50%) var(--ty, 50%));
+  pointer-events: auto;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+  .page-transition-curtain,
+  .page-transition-slide,
+  .page-transition-circle {
+    transition: opacity 0.2s !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+  .page-transition-curtain:not(.is-active),
+  .page-transition-slide:not(.is-active),
+  .page-transition-circle:not(.is-active) {
+    opacity: 0;
+  }
+}

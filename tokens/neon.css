@@ -1,0 +1,38 @@
+/* Neon Theme — deep black base, electric neon accents
+   Inspired by Hatom (SOTD Nov 2024): #F76CFE + #C1FF12 */
+
+[data-theme="neon"] {
+  --color-bg: #050505;
+  --color-bg-alt: #0a0a0a;
+  --color-surface: #0f0f0f;
+  --color-surface-elevated: #161616;
+  --color-surface-hover: #1e1e1e;
+  --color-text: #f0f0f0;
+  --color-text-primary: #ffffff;
+  --color-text-muted: #7a7a7a;
+  --color-text-dim: #3a3a3a;
+  --color-text-inverse: #050505;
+  --color-accent: #f76cfe;
+  --color-accent-hover: #ff8fff;
+  --color-accent-dim: rgba(247, 108, 254, 0.15);
+  --color-cta: #c1ff12;
+  --color-cta-hover: #d4ff4a;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
+  --color-border-accent: rgba(247, 108, 254, 0.4);
+  --color-overlay: rgba(0, 0, 0, 0.8);
+  --color-overlay-strong: rgba(0, 0, 0, 0.9);
+  --color-backdrop: rgba(5, 5, 5, 0.85);
+  --gradient-hero: radial-gradient(ellipse at top, rgba(247, 108, 254, 0.12), transparent 60%);
+  --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+  --gradient-text: linear-gradient(135deg, var(--color-accent) 0%, var(--color-cta) 100%);
+  --glass-bg: rgba(15, 15, 15, 0.7);
+  --glass-border: rgba(247, 108, 254, 0.15);
+  --glass-blur: 24px;
+  --color-selection-bg: rgba(247, 108, 254, 0.3);
+  --color-selection-text: var(--color-text-primary);
+  --color-focus: var(--color-accent);
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus);
+  --shadow-glow: 0 0 20px rgba(247, 108, 254, 0.4), 0 0 40px rgba(247, 108, 254, 0.2);
+  --shadow-glow-cta: 0 0 20px rgba(193, 255, 18, 0.4), 0 0 40px rgba(193, 255, 18, 0.2);
+}

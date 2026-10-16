@@ -1,0 +1,37 @@
+/* Duotone Theme — two-color system, high contrast
+   Inspired by Breaking (SOTD Aug 2024): #2D41D3 + #FFFFFF
+   And AW Portfolio (SOTD Dec 2024): #f40c3f + #160000 */
+
+[data-theme="duotone"] {
+  --color-bg: #0d0a1a;
+  --color-bg-alt: #120e24;
+  --color-surface: #1a1530;
+  --color-surface-elevated: #221c3e;
+  --color-surface-hover: #2a2348;
+  --color-text: #e8e6f0;
+  --color-text-primary: #ffffff;
+  --color-text-muted: #8a85a0;
+  --color-text-dim: #4a4560;
+  --color-text-inverse: #0d0a1a;
+  --color-accent: #2d41d3;
+  --color-accent-hover: #3d51e3;
+  --color-accent-dim: rgba(45, 65, 211, 0.2);
+  --color-cta: #f40c3f;
+  --color-cta-hover: #ff1e56;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
+  --color-border-accent: rgba(45, 65, 211, 0.4);
+  --color-overlay: rgba(13, 10, 26, 0.8);
+  --color-overlay-strong: rgba(13, 10, 26, 0.9);
+  --color-backdrop: rgba(13, 10, 26, 0.85);
+  --gradient-hero: radial-gradient(ellipse at top, rgba(45, 65, 211, 0.15), transparent 60%);
+  --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+  --gradient-text: linear-gradient(135deg, var(--color-accent) 0%, var(--color-cta) 100%);
+  --glass-bg: rgba(26, 21, 48, 0.6);
+  --glass-border: rgba(45, 65, 211, 0.15);
+  --glass-blur: 20px;
+  --color-selection-bg: rgba(45, 65, 211, 0.3);
+  --color-selection-text: var(--color-text-primary);
+  --color-focus: var(--color-accent);
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus);
+}

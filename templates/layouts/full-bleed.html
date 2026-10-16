@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Bleed Layout — toti-web-design-skill</title>
+  <link rel="stylesheet" href="../../tokens/base.css">
+  <link rel="stylesheet" href="../../tokens/dark.css">
+  <link rel="stylesheet" href="../../tokens/fluid-type.css">
+  <link rel="stylesheet" href="../../tokens/fluid-spacing.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    .full-bleed { width: 100%; min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .full-bleed__media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+    .full-bleed__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.8) 100%); z-index: 2; }
+    .full-bleed__content { position: relative; z-index: 3; max-width: var(--container-max); width: 100%; padding: var(--container-padding); text-align: center; }
+    .full-bleed__title { font-family: var(--font-display); font-size: var(--font-size-display-lg); line-height: var(--leading-display); letter-spacing: var(--tracking-display); font-weight: var(--weight-bold); color: var(--color-text-primary); }
+    .full-bleed__subtitle { font-size: var(--font-size-xl); color: var(--color-text); margin-top: var(--space-md); max-width: 50ch; margin-left: auto; margin-right: auto; }
+    .full-bleed__cta { display: inline-flex; align-items: center; gap: var(--space-2xs); margin-top: var(--space-xl); padding: var(--padding-btn-y) var(--padding-btn-x); background: var(--color-cta); color: var(--color-text-inverse); font-size: var(--font-size-base); font-weight: var(--weight-semibold); border: none; border-radius: var(--radius-full); cursor: pointer; transition: transform var(--transition-spring), box-shadow var(--transition-base); }
+    .full-bleed__cta:hover { transform: scale(1.05); box-shadow: var(--shadow-glow); }
+    @media (max-width: 768px) { .full-bleed__title { font-size: var(--font-size-5xl); } }
+  </style>
+</head>
+<body>
+  <section class="full-bleed">
+    <img class="full-bleed__media" src="https://picsum.photos/1920/1080" alt="Full-bleed hero" data-parallax="0.15">
+    <div class="full-bleed__overlay"></div>
+    <div class="full-bleed__content">
+      <h1 class="full-bleed__title" data-text-reveal="words">Immersive Full-Bleed</h1>
+      <p class="full-bleed__subtitle" data-reveal="up" data-reveal-delay="300">Media extends edge-to-edge. Content overlays. No container walls. The viewer is inside the page.</p>
+      <button class="full-bleed__cta" data-magnetic data-reveal="up" data-reveal-delay="600">Explore</button>
+    </div>
+  </section>
+  <script src="../../animations/scroll-driven.js"></script>
+  <script src="../../animations/text-reveal.js"></script>
+  <script src="../../animations/parallax.js"></script>
+  <script src="../../animations/magnetic-cursor.js"></script>
+</body>
+</html>

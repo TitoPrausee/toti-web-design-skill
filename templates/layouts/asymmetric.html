@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asymmetric Layout — toti-web-design-skill</title>
+  <link rel="stylesheet" href="../../tokens/base.css">
+  <link rel="stylesheet" href="../../tokens/dark.css">
+  <link rel="stylesheet" href="../../tokens/fluid-type.css">
+  <link rel="stylesheet" href="../../tokens/fluid-spacing.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-text); line-height: var(--leading-body); -webkit-font-smoothing: antialiased; }
+    .asymmetric-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--grid-gap); max-width: var(--container-max); margin: 0 auto; padding: var(--padding-section); }
+    .col-7 { grid-column: span 7; }
+    .col-4 { grid-column: span 4; grid-column-start: 9; }
+    .col-5 { grid-column: span 5; }
+    .col-6 { grid-column: span 6; grid-column-start: 4; }
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: var(--padding-section); max-width: var(--container-max); margin: 0 auto; }
+    .hero h1 { font-family: var(--font-display); font-size: var(--font-size-display); line-height: var(--leading-display); letter-spacing: var(--tracking-display); font-weight: var(--weight-bold); max-width: 14ch; }
+    .hero-meta { display: flex; flex-direction: column; gap: var(--space-xs); align-self: flex-end; padding-bottom: var(--space-xl); }
+    .hero-meta span { font-size: var(--font-size-xs); letter-spacing: var(--tracking-overline); text-transform: uppercase; color: var(--color-text-muted); }
+    .section-offset { padding: var(--padding-section); max-width: var(--container-max); margin: 0 auto; }
+    .section-offset h2 { font-family: var(--font-display); font-size: var(--font-size-4xl); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); font-weight: var(--weight-semibold); }
+    .section-offset p { font-size: var(--font-size-lg); color: var(--color-text-muted); max-width: 55ch; }
+    @media (max-width: 768px) { .col-7, .col-4, .col-5, .col-6 { grid-column: span 12; grid-column-start: auto; } }
+  </style>
+</head>
+<body>
+  <section class="hero asymmetric-grid">
+    <div class="col-7"><h1 data-text-reveal="words">Design that refuses to be ignored</h1></div>
+    <div class="col-4 hero-meta">
+      <span>2026 — Present</span>
+      <span>Web Design / Development</span>
+      <span>Award-winning patterns</span>
+    </div>
+  </section>
+  <section class="section-offset asymmetric-grid">
+    <div class="col-5"><h2>Asymmetric Grid</h2></div>
+    <div class="col-6"><p>The asymmetric layout breaks the centered template. Headlines pull left, supporting content offsets right. Visual tension replaces symmetry.</p></div>
+  </section>
+  <script src="../../animations/scroll-driven.js"></script>
+  <script src="../../animations/text-reveal.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hidden Scroll Navigation</title>
+  <link rel="stylesheet" href="../../tokens/base.css">
+  <link rel="stylesheet" href="../../tokens/dark.css">
+  <style>
+    .hidden-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: var(--space-md, 1.5rem) var(--space-xl, 3rem); background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border, rgba(255,255,255,0.08)); transform: translateY(0); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .hidden-nav.is-hidden { transform: translateY(-100%); }
+    .hidden-nav__logo { font-size: var(--font-size-lg, 1.25rem); font-weight: 800; color: var(--color-text, #f5f5f5); text-decoration: none; }
+    .hidden-nav__list { display: flex; list-style: none; gap: var(--space-lg, 2rem); margin: 0; padding: 0; }
+    .hidden-nav__link { font-size: var(--font-size-sm, 0.8rem); color: var(--color-text-muted, #8a8a8a); text-decoration: none; transition: color 0.3s; }
+    .hidden-nav__link:hover { color: var(--color-text, #f5f5f5); }
+    @media (max-width: 768px) { .hidden-nav__list { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .hidden-nav { transition: none; } }
+  </style>
+</head>
+<body>
+  <nav class="hidden-nav" id="hidden-nav">
+    <a href="#" class="hidden-nav__logo">Logo</a>
+    <ul class="hidden-nav__list"><li><a href="#" class="hidden-nav__link">Work</a></li><li><a href="#" class="hidden-nav__link">Studio</a></li><li><a href="#" class="hidden-nav__link">Contact</a></li></ul>
+  </nav>
+  <script>
+    const nav = document.getElementById('hidden-nav'); let lastScroll = 0; let ticking = false;
+    function onScroll() { const s = window.scrollY; if (s <= 0) { nav.classList.remove('is-hidden'); } else if (s > lastScroll && s > 100) { nav.classList.add('is-hidden'); } else { nav.classList.remove('is-hidden'); } lastScroll = s; ticking = false; }
+    window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
+  </script>
+</body>
+</html>

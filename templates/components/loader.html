@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preloader</title>
+  <link rel="stylesheet" href="../tokens/design-tokens.css">
+  <style>
+    .loader {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: var(--color-bg);
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .loader.is-done { opacity: 0; visibility: hidden; }
+    .loader__text {
+      font-size: var(--font-size-sm);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-md);
+    }
+    .loader__bar {
+      width: clamp(200px, 40vw, 400px);
+      height: 2px;
+      background: var(--color-border);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .loader__progress {
+      width: 0%;
+      height: 100%;
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+      transition: width 0.3s var(--ease-smooth);
+    }
+    .loader__percent {
+      font-size: var(--font-size-6xl);
+      font-weight: var(--weight-black);
+      letter-spacing: var(--tracking-display);
+      color: var(--color-text);
+      margin-top: var(--space-sm);
+      font-variant-numeric: tabular-nums;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .loader { transition: opacity 0.2s; }
+      .loader__progress { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader" id="loader">
+    <p class="loader__text">Loading</p>
+    <div class="loader__bar"><div class="loader__progress" id="loader-progress"></div></div>
+    <p class="loader__percent" id="loader-percent">0</p>
+  </div>
+  <script>
+    (function() {
+      const loader = document.getElementById('loader');
+      const progress = document.getElementById('loader-progress');
+      const percent = document.getElementById('loader-percent');
+      let current = 0;
+
+      function updateProgress() {
+        current = Math.min(100, current + Math.random() * 15 + 5);
+        progress.style.width = current + '%';
+        percent.textContent = Math.floor(current);
+
+        if (current < 100) {
+          setTimeout(updateProgress, 100 + Math.random() * 200);
+        } else {
+          setTimeout(() => {
+            loader.classList.add('is-done');
+            document.body.style.overflow = '';
+          }, 400);
+        }
+      }
+
+      document.body.style.overflow = 'hidden';
+      setTimeout(updateProgress, 200);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+/* Monochrome Theme — pure grayscale, no color accents
+   Inspired by The Creative Website Manual (SOTD Dec 2025): #070707 + #EAEAEA */
+
+[data-theme="monochrome"] {
+  --color-bg: #070707;
+  --color-bg-alt: #0c0c0c;
+  --color-surface: #111111;
+  --color-surface-elevated: #181818;
+  --color-surface-hover: #1e1e1e;
+  --color-text: #eaeaea;
+  --color-text-primary: #ffffff;
+  --color-text-muted: #808080;
+  --color-text-dim: #404040;
+  --color-text-inverse: #070707;
+  --color-accent: #c0c0c0;
+  --color-accent-hover: #e0e0e0;
+  --color-accent-dim: rgba(192, 192, 192, 0.1);
+  --color-cta: #ffffff;
+  --color-cta-hover: #f0f0f0;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
+  --color-border-accent: rgba(255, 255, 255, 0.2);
+  --color-overlay: rgba(0, 0, 0, 0.75);
+  --color-overlay-strong: rgba(0, 0, 0, 0.9);
+  --color-backdrop: rgba(7, 7, 7, 0.85);
+  --gradient-hero: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.03), transparent 60%);
+  --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+  --gradient-text: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-text-muted) 100%);
+  --glass-bg: rgba(17, 17, 17, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 20px;
+  --color-selection-bg: rgba(255, 255, 255, 0.2);
+  --color-selection-text: var(--color-text-primary);
+  --color-focus: #ffffff;
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus);
+}

@@ -1,0 +1,19 @@
+{
+  "name": "toti-web-design-skill",
+  "version": "1.0.0",
+  "description": "Award-winning web design skill inspired by awwwards.com patterns",
+  "license": "MIT",
+  "author": "Tito Prause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TitoPrausee/toti-web-design-skill.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "node -e \"find templates -name '*.html' -exec node -e \\\"const fs=require('fs');const f=process.argv[1];const c=fs.readFileSync(f,'utf-8');if(!c.includes('<!DOCTYPE html>')){console.error('Missing DOCTYPE: '+f);process.exit(1)}\\\" {} \\;\""
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jsdom": "^24.0.0"
+  }
+}

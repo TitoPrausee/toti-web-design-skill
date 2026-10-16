@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento Layout — toti-web-design-skill</title>
+  <link rel="stylesheet" href="../../tokens/base.css">
+  <link rel="stylesheet" href="../../tokens/dark.css">
+  <link rel="stylesheet" href="../../tokens/fluid-type.css">
+  <link rel="stylesheet" href="../../tokens/fluid-spacing.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    .bento { max-width: var(--container-max); margin: 0 auto; padding: var(--padding-section); display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(180px, auto); gap: var(--space-md); }
+    .bento__item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--padding-card); display: flex; flex-direction: column; justify-content: space-between; transition: background var(--transition-base), border-color var(--transition-base); overflow: hidden; }
+    .bento__item:hover { background: var(--color-surface-hover); border-color: var(--color-border-strong); }
+    .bento__item--lg { grid-column: span 2; grid-row: span 2; }
+    .bento__item--wide { grid-column: span 2; }
+    .bento__item--tall { grid-row: span 2; }
+    .bento__label { font-size: var(--font-size-xs); letter-spacing: var(--tracking-overline); text-transform: uppercase; color: var(--color-text-muted); }
+    .bento__title { font-family: var(--font-display); font-size: var(--font-size-2xl); font-weight: var(--weight-semibold); line-height: var(--leading-subheading); }
+    .bento__lg .bento__title { font-size: var(--font-size-4xl); }
+    .bento__value { font-family: var(--font-display); font-size: var(--font-size-3xl); font-weight: var(--weight-bold); color: var(--color-accent); }
+    @media (max-width: 768px) { .bento { grid-template-columns: repeat(2, 1fr); } .bento__item--lg { grid-column: span 2; grid-row: span 1; } .bento__item--wide { grid-column: span 2; } }
+  </style>
+</head>
+<body>
+  <section class="bento">
+    <div class="bento__item bento__item--lg bento__lg" data-reveal="scale"><span class="bento__label">Featured</span><h2 class="bento__title">Modular content blocks that tile into a composition</h2></div>
+    <div class="bento__item bento__item--wide" data-reveal="up" data-reveal-delay="100"><span class="bento__label">Stat</span><span class="bento__value">95+</span></div>
+    <div class="bento__item" data-reveal="up" data-reveal-delay="200"><span class="bento__label">Metric</span><span class="bento__value">1.6s</span></div>
+    <div class="bento__item bento__item--tall" data-reveal="up" data-reveal-delay="300"><span class="bento__label">Category</span><div><h3 class="bento__title">Bento Grid</h3><p style="color: var(--color-text-muted); margin-top: var(--space-2xs);">Modular tiles, each self-contained. The grid adapts through size variation, not decoration.</p></div></div>
+    <div class="bento__item" data-reveal="up" data-reveal-delay="400"><span class="bento__label">Score</span><span class="bento__value">8.4</span></div>
+    <div class="bento__item bento__item--wide" data-reveal="up" data-reveal-delay="500"><span class="bento__label">Detail</span><p style="font-size: var(--font-size-base); color: var(--color-text-muted);">Each block is independent but related. The grid creates rhythm through size variation.</p></div>
+  </section>
+  <script src="../../animations/scroll-driven.js"></script>
+</body>
+</html>

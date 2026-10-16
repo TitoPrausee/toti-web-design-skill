@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Image Reveal — clip-path / mask / scale image reveals on scroll
+   Import after design-tokens.css. Triggered by image-reveal.js (Intersection Observer).
+   
+   Usage:
+   <figure class="image-reveal image-reveal--clip" data-image-reveal="clip">
+     <img src="..." alt="..." loading="lazy">
+   </figure>
+   ========================================================================== */
+
+.image-reveal {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg, 16px);
+  background: var(--color-surface, #141414);
+}
+
+.image-reveal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---- Clip-path reveal: image starts clipped, reveals bottom-to-top ---- */
+.image-reveal--clip img {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1s cubic-bezier(0.77, 0, 0.18, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.image-reveal--clip.is-visible img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1.05);
+}
+
+/* ---- Scale reveal: image scales from 1.3 → 1.0 with fade ---- */
+.image-reveal--scale img {
+  transform: scale(1.3);
+  opacity: 0;
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s ease;
+}
+.image-reveal--scale.is-visible img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ---- Mask reveal: overlay slides away to reveal image ---- */
+.image-reveal--mask::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg, #0a0a0a);
+  z-index: 1;
+  transform-origin: right;
+  transition: transform 1s cubic-bezier(0.77, 0, 0.18, 1);
+}
+.image-reveal--mask.is-visible::before {
+  transform: scaleX(0);
+}
+.image-reveal--mask img {
+  transform: scale(1.2);
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.image-reveal--mask.is-visible img {
+  transform: scale(1);
+}
+
+/* ---- Overlay caption ---- */
+.image-reveal__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-lg, 2rem);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: var(--color-text, #f5f5f5);
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease 0.3s,
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+.image-reveal.is-visible .image-reveal__caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .image-reveal--clip img,
+  .image-reveal--scale img,
+  .image-reveal--mask img,
+  .image-reveal--mask::before {
+    clip-path: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .image-reveal__caption {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

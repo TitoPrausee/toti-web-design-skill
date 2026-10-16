@@ -1,0 +1,27 @@
+/* Fluid Type Scale — 1.25 ratio (major third), clamp-based */
+
+:root {
+  --font-size-xs: clamp(0.64rem, 0.61rem + 0.15vw, 0.72rem);
+  --font-size-sm: clamp(0.80rem, 0.76rem + 0.19vw, 0.90rem);
+  --font-size-base: clamp(1.00rem, 0.95rem + 0.24vw, 1.13rem);
+  --font-size-lg: clamp(1.25rem, 1.19rem + 0.30vw, 1.41rem);
+  --font-size-xl: clamp(1.56rem, 1.49rem + 0.38vw, 1.76rem);
+  --font-size-2xl: clamp(1.95rem, 1.86rem + 0.47vw, 2.20rem);
+  --font-size-3xl: clamp(2.44rem, 2.32rem + 0.59vw, 2.75rem);
+  --font-size-4xl: clamp(3.05rem, 2.90rem + 0.74vw, 3.44rem);
+  --font-size-5xl: clamp(3.81rem, 3.63rem + 0.92vw, 4.30rem);
+  --font-size-6xl: clamp(4.77rem, 4.54rem + 1.16vw, 5.38rem);
+  --font-size-7xl: clamp(5.96rem, 5.67rem + 1.45vw, 6.72rem);
+  --font-size-display: clamp(4.77rem, 3.82rem + 4.76vw, 8.00rem);
+  --font-size-display-lg: clamp(5.96rem, 4.53rem + 7.14vw, 10.00rem);
+  --leading-display: 0.95;
+  --leading-heading: 1.05;
+  --leading-subheading: 1.2;
+  --leading-body: 1.6;
+  --leading-caption: 1.4;
+  --tracking-display: -0.04em;
+  --tracking-heading: -0.02em;
+  --tracking-body: 0;
+  --tracking-label: 0.02em;
+  --tracking-overline: 0.12em;
+}
