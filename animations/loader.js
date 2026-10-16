@@ -31,6 +31,8 @@ const Loader = (() => {
     loader = document.querySelector('[data-loader]'); if (!loader) return;
     bar = loader.querySelector(config.barSelector); text = loader.querySelector(config.textSelector);
     if (bar) { bar.style.transformOrigin = 'left'; bar.style.transform = 'scaleX(0)'; bar.style.transition = 'transform 100ms linear'; }
+    // Respect prefers-reduced-motion: skip animation, show immediately
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { progress = 100; complete(); return; }
     document.body.style.overflow = 'hidden'; startTime = Date.now(); rafId = requestAnimationFrame(updateProgress);
   }
   function destroy() { if (rafId) cancelAnimationFrame(rafId); if (loader && loader.parentNode) loader.parentNode.removeChild(loader); document.body.style.overflow = ''; }

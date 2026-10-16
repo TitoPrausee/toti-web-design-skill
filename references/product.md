@@ -8,7 +8,7 @@ Sites analyzed from awwwards.com winners in the Product category.
 - **URL:** https://landonorris.com/
 - **Award:** SOTY 2025 + Developer Award
 - **Creator:** OFF+BRAND
-- **Colors:** Papaya orange, dark, racing-inspired
+- **Colors:** #ff6b35 papaya orange, #0a0a0a dark, #f5f5f5 text
 - **Fonts:** Bold display, racing aesthetic
 - **Layout:** Immersive full-bleed, scroll-driven storytelling
 - **Animations:** WebGL effects, scroll-driven transitions, high-performance motion
@@ -25,7 +25,7 @@ Sites analyzed from awwwards.com winners in the Product category.
 - **URL:** https://trevornoah.com/
 - **Award:** SOTD Sep 03, 2026
 - **Creator:** OFF+BRAND
-- **Colors:** Editorial dark, warm accents
+- **Colors:** #1a1a1a editorial dark, #ff8c42 warm accent, #f5f5f0 text
 - **Layout:** Editorial-style, content-first
 - **Animations:** Smooth scroll, text reveals, image parallax
 - **What Makes It Special:** Celebrity personal brand treated with editorial restraint. Content leads, design supports.
@@ -40,7 +40,7 @@ Sites analyzed from awwwards.com winners in the Product category.
 - **URL:** https://www.squarespace.com/foundations
 - **Award:** SOTD Sep 01, 2026
 - **Creator:** Resn
-- **Colors:** Dark-first with vibrant product accents
+- **Colors:** #0a0a0a dark-first, #578bfc vibrant accent, #f5f5f5 text
 - **Layout:** Product showcase grid, feature highlights
 - **Animations:** Interactive 3D elements, scroll-driven feature reveals
 - **What Makes It Special:** Resn's signature interactive playfulness applied to a product page.
