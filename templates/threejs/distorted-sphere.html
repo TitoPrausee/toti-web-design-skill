@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three.js Distorted Sphere — toti-web-design-skill</title>
+  <link rel="stylesheet" href="../../tokens/base.css">
+  <link rel="stylesheet" href="../../tokens/dark.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--color-bg); overflow: hidden; }
+    #canvas { position: fixed; inset: 0; z-index: 0; }
+    .overlay { position: fixed; inset: 0; z-index: 1; display: flex; align-items: flex-end; justify-content: center; padding: var(--padding-section); pointer-events: none; }
+    .overlay h1 { font-family: var(--font-display); font-size: var(--font-size-5xl); font-weight: var(--weight-bold); color: var(--color-text-primary); mix-blend-mode: difference; }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="overlay"><h1>Distorted Sphere</h1></div>
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.skypack.dev/three" } }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    const canvas = document.getElementById('canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const geometry = new THREE.IcosahedronGeometry(2, 64);
+    const originalPositions = geometry.attributes.position.array.slice();
+    const material = new THREE.MeshBasicMaterial({ color: 0x578bfc, wireframe: true, transparent: true, opacity: 0.6 });
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+    camera.position.z = 6;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let time = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      if (prefersReducedMotion) { renderer.render(scene, camera); return; }
+      time += 0.01;
+      const positions = geometry.attributes.position.array;
+      for (let i = 0; i < positions.length; i += 3) {
+        const ox = originalPositions[i], oy = originalPositions[i + 1], oz = originalPositions[i + 2];
+        const noise = Math.sin(ox * 2 + time) * Math.cos(oy * 2 + time) * Math.sin(oz * 2 + time);
+        const scale = 1 + noise * 0.2;
+        positions[i] = ox * scale; positions[i + 1] = oy * scale; positions[i + 2] = oz * scale;
+      }
+      geometry.attributes.position.needsUpdate = true;
+      mesh.rotation.y += 0.003; mesh.rotation.x += 0.001;
+      renderer.render(scene, camera);
+    }
+    animate();
+    window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+  </script>
+</body>
+</html>

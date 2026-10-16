@@ -3,29 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hidden Scroll Navigation</title>
+  <title>Hidden Scroll Nav — toti-web-design-skill</title>
   <link rel="stylesheet" href="../../tokens/base.css">
   <link rel="stylesheet" href="../../tokens/dark.css">
+  <link rel="stylesheet" href="../../tokens/fluid-type.css">
+  <link rel="stylesheet" href="../../tokens/fluid-spacing.css">
   <style>
-    .hidden-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: var(--space-md, 1.5rem) var(--space-xl, 3rem); background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border, rgba(255,255,255,0.08)); transform: translateY(0); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
-    .hidden-nav.is-hidden { transform: translateY(-100%); }
-    .hidden-nav__logo { font-size: var(--font-size-lg, 1.25rem); font-weight: 800; color: var(--color-text, #f5f5f5); text-decoration: none; }
-    .hidden-nav__list { display: flex; list-style: none; gap: var(--space-lg, 2rem); margin: 0; padding: 0; }
-    .hidden-nav__link { font-size: var(--font-size-sm, 0.8rem); color: var(--color-text-muted, #8a8a8a); text-decoration: none; transition: color 0.3s; }
-    .hidden-nav__link:hover { color: var(--color-text, #f5f5f5); }
-    @media (max-width: 768px) { .hidden-nav__list { display: none; } }
-    @media (prefers-reduced-motion: reduce) { .hidden-nav { transition: none; } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    .nav-hidden { position: fixed; top: 0; left: 0; width: 100%; z-index: var(--z-sticky); padding: var(--space-sm) var(--container-padding); background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); border-bottom: 1px solid var(--color-border); transform: translateY(-100%); transition: transform var(--transition-smooth); }
+    .nav-hidden.is-visible { transform: translateY(0); }
+    .nav-hidden__inner { max-width: var(--container-max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .nav-hidden__logo { font-family: var(--font-display); font-size: var(--font-size-lg); font-weight: var(--weight-bold); color: var(--color-text-primary); text-decoration: none; }
+    .nav-hidden__links { display: flex; gap: var(--space-md); list-style: none; }
+    .nav-hidden__links a { font-size: var(--font-size-sm); color: var(--color-text-muted); text-decoration: none; transition: color var(--transition-base); }
+    .nav-hidden__links a:hover { color: var(--color-text-primary); }
+    .scroll-content { max-width: var(--container-max); margin: 0 auto; padding: var(--padding-section); }
+    .scroll-content h1 { font-family: var(--font-display); font-size: var(--font-size-5xl); font-weight: var(--weight-bold); margin-bottom: var(--space-lg); }
+    .scroll-content p { font-size: var(--font-size-lg); color: var(--color-text-muted); margin-bottom: var(--space-xl); max-width: 60ch; }
+    .spacer { height: 200vh; }
   </style>
 </head>
 <body>
-  <nav class="hidden-nav" id="hidden-nav">
-    <a href="#" class="hidden-nav__logo">Logo</a>
-    <ul class="hidden-nav__list"><li><a href="#" class="hidden-nav__link">Work</a></li><li><a href="#" class="hidden-nav__link">Studio</a></li><li><a href="#" class="hidden-nav__link">Contact</a></li></ul>
+  <nav class="nav-hidden" id="navHidden">
+    <div class="nav-hidden__inner">
+      <a href="#" class="nav-hidden__logo">Logo</a>
+      <ul class="nav-hidden__links"><li><a href="#">Work</a></li><li><a href="#">About</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
   </nav>
+  <main class="scroll-content">
+    <h1 data-text-reveal="words">Hidden Scroll Nav</h1>
+    <p>The navigation hides when scrolling down and reappears when scrolling up. Uses a glassmorphic background. Common in portfolio and editorial awwwards winners.</p>
+    <p>Scroll down to see the nav disappear. Scroll up to bring it back.</p>
+    <div class="spacer"></div>
+  </main>
   <script>
-    const nav = document.getElementById('hidden-nav'); let lastScroll = 0; let ticking = false;
-    function onScroll() { const s = window.scrollY; if (s <= 0) { nav.classList.remove('is-hidden'); } else if (s > lastScroll && s > 100) { nav.classList.add('is-hidden'); } else { nav.classList.remove('is-hidden'); } lastScroll = s; ticking = false; }
-    window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
+    const nav = document.getElementById('navHidden'); let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 100) { if (currentScroll < lastScroll) nav.classList.add('is-visible'); else nav.classList.remove('is-visible'); }
+      else nav.classList.remove('is-visible');
+      lastScroll = currentScroll;
+    }, { passive: true });
   </script>
+  <script src="../../animations/text-reveal.js"></script>
 </body>
 </html>
